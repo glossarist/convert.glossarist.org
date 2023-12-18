@@ -23,17 +23,15 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment:
-      name: production
     steps:
-      - name: Use Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18.x'
-
       - uses: actions/checkout@v4
         with:
           repository: glossarist/migration-adapters
+
+      - name: Use Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
 
       - name: Enable Yarn Berry
         run: |
