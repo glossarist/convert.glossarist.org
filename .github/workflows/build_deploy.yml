@@ -52,10 +52,15 @@ jobs:
         run: |
           yarn workspace webgui build --debug
 
+      - name: Move deploy assets to _site
+        run: |
+          ls -l
+          mkdir -p _site
+          mv packages/webgui/dist/* _site/
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          name: webgui-dist
           path: packages/webgui/dist/
 
   # Deployment job
@@ -70,5 +75,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
-        with:
-          artifact_name: webgui-dist
