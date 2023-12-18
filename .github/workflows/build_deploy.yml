@@ -55,6 +55,9 @@ jobs:
       - name: Move deploy assets to _site
         run: |
           ls -l
+          ls -l packages
+          ls -l packages/webgui
+          ls -l packages/webgui/dist
           mkdir -p _site
           mv packages/webgui/dist/* _site/
 
