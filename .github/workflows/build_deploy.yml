@@ -51,8 +51,8 @@ jobs:
 
       - name: Build site
         run: |
-          yarn && yarn workspace webgui build --debug --distdir=$(pwd)/webgui-dist
-          ls && ls webgui-dist
+          yarn workspace webgui build --debug --distdir=$(pwd)/webgui-dist
+          ls $(pwd) && ls $(pwd)/webgui-dist
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
