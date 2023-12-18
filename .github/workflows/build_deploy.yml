@@ -48,9 +48,8 @@ jobs:
         uses: actions/configure-pages@v3
 
       - name: Build site
-        shell: bash
         run: |
-          yarn workspace webgui build --debug --distdir=$(pwd)/webgui-dist
+          yarn workspace webgui build --debug --distdir='$(pwd)/webgui-dist'
           ls $(pwd) && ls $(pwd)/webgui-dist
 
       - name: Upload artifact
