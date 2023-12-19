@@ -15,7 +15,8 @@ jobs:
       - name: Use Node
         uses: actions/setup-node@v2
         with:
-          node-version: '18.x'
+          node-version: 18.18.2
+          cache: 'yarn'
 
       - uses: actions/checkout@v4
         with:
@@ -43,7 +44,7 @@ jobs:
       - name: Link Checker
         uses: lycheeverse/lychee-action@v1.2.0
         with:
-          args: --verbose --no-progress --exclude-file .lycheeignore -- _site/**/*.html
+          args: --verbose --no-progress --exclude-file .lycheeignore -- packages/webgui/dist/**/*.html
           fail: true
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

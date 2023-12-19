@@ -31,7 +31,7 @@ jobs:
       - name: Use Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 18.18.2
           cache: 'yarn'
 
       - name: Enable Yarn Berry
@@ -49,19 +49,19 @@ jobs:
 
       - name: Build site
         run: |
-          yarn workspace webgui build --debug --distdir=$(pwd)/webgui-dist
+          yarn workspace webgui build --debug
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: webgui-dist/
+          path: packages/webgui/dist
 
   # Deployment job
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    if: ${{ github.ref == 'refs/heads/master' }}
+    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     needs: build
     steps:
